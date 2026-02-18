@@ -4,6 +4,7 @@ import numpy as np
 import sys
 sys.dont_write_bytecode = True
 import os
+TF_ENABLE_ONEDNN_OPTS=0
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense, Input
 
@@ -70,7 +71,7 @@ class FlowerClient(fl.client.NumPyClient):
         history = self.model.fit(
             self.X, self.y, 
             sample_weight=self.trust_weights, 
-            epochs=20,
+            epochs=1,
             verbose=1
         )
         
